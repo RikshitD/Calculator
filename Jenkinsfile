@@ -4,11 +4,11 @@ pipeline {
         maven 'm7'
     }
     environment {
-        GIT_CRED = '40389056-cc9c-4ed5-be98-9be7ad12cc5b'
+      //  GIT_CRED = '40389056-cc9c-4ed5-be98-9be7ad12cc5b'
         ADMIN = 'admin'
         MAIN_BRANCH = 'main'
         PUB_BRANCH = 'pub'
-        GIT_REPO = credentials('GIT_URL')
+    //    GIT_REPO = credentials('GIT_URL')
     }
     stages {
         stage("Determine Branch") {
@@ -22,15 +22,15 @@ pipeline {
                 }
             }
         }
-        stage("Fetching") {
-            steps {
-                script {
+        //stage("Fetching") {
+          //  steps {
+            //    script {
                     //withCredentials([string(credentialsId: 'GIT_URL', variable: 'GIT_REPO')]) {
-                        git branch: "${env.BRANCH_TO_BUILD}", url: "${GIT_REPO}", credentialsId: "${GIT_CRED}"     
+              //          git branch: "${env.BRANCH_TO_BUILD}", url: "${GIT_REPO}", credentialsId: "${GIT_CRED}"     
                     //}
-                }
-            }
-        }
+                //}
+            //}
+        //}
         stage("Validate") {
             steps {
                 script {
