@@ -1,0 +1,18 @@
+pipeline {
+  agent any  
+    tools {
+        maven 'm7'
+    }
+    stages {
+        stage("Scan") {
+            steps {
+                script {
+                     withSonarQubeEnv(installationName: 'sonarqube') {
+                         sh './mvnw clean org.sonar.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'        
+                    }
+                }
+            }
+        }
+    }
+    
+}
