@@ -22,23 +22,29 @@ pipeline {
         }
     }
     post {
-    always {
-        emailext (
-            subject: "Pipeline Status: ${BUILD_NUMBER}",
-            body: """
-            <html>
-            <body>
-                <p>Build Status: ${BUILD_STATUS}</p>
-                <p>Build Number: ${BUILD_NUMBER}</p>
-                <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
-            </body>
-            </html>
-            """,
-            to: "ribu.deka@gmail.com",
-            from: "jenkins@exampl.com",
-            replyTo: "jenkins@example.com",
-            mimeType: 'text/html'
-        )
+        always {
+            script {
+                // Set BUILD_STATUS to the current build result
+                def BUILD_STATUS = currentBuild.result ?: 'SUCCESS'
+                
+                emailext (
+                    subject: "Pipeline Status: ${BUILD_NUMBER}",
+                    body: """
+                    <html>
+                    <body>
+                        <p>Build Status: ${BUILD_STATUS}</p>
+                        <p>Build Number: ${BUILD_NUMBER}</p>
+                        <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
+                    </body>
+                    </html>
+                    """,
+                    to: "ribu.deka@gmail.com",
+                    from: "jenkins@example.com",
+                    replyTo: "jenkins@example.com",
+                    mimeType: 'text/html'
+                )
+            }
+        }
     }
 }
-}
+
