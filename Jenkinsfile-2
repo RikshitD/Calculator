@@ -12,7 +12,7 @@ pipeline {
                             -Dsonar.projectKey=jenkinsproj \
                             -Dsonar.projectName="jenkinsproj" \
                             -Dsonar.host.url=http://localhost:9000 \
-                            -Dsonar.token=${SONAR_TOKEN}'''
+                            -Dsonar.token=${SONAR_JENKINS}'''
                     }
                 }
             }
