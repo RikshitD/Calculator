@@ -42,13 +42,6 @@
                     <target>17</target>
                 </configuration>
             </plugin>
-
-            <!-- SonarQube Plugin configuration -->
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>4.0.0.4121</version> <!-- Use the desired SonarQube version -->
-            </plugin>
         </plugins>
     </build>
 </project>
