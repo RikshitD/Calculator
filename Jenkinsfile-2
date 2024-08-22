@@ -1,18 +1,21 @@
 pipeline {
-  agent any  
+    agent any  
     tools {
-        maven 'm7'
+        maven 'm7' 
     }
     stages {
         stage("Scan") {
             steps {
                 script {
-                     withSonarQubeEnv(installationName: 'sonarqube') {
-                        sh 'mvn clean verify sonar:sonar   -Dsonar.projectKey=jenkinsproj   -Dsonar.projectName='jenkinsproj'   -Dsonar.host.url=http://localhost:9000   -Dsonar.token=sqp_ed68cd105d403a914762516850bab6f8102d57f4'        
+                    withSonarQubeEnv(installationName: 'sonarqube') {
+                        sh '''mvn clean verify sonar:sonar \
+                            -Dsonar.projectKey=jenkinsproj \
+                            -Dsonar.projectName="jenkinsproj" \
+                            -Dsonar.host.url=http://localhost:9000 \
+                            -Dsonar.token=${SONAR_TOKEN}'''
                     }
                 }
             }
         }
     }
-    
 }
