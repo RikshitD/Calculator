@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                      withSonarQubeEnv(installationName: 'sonarqube') {
-                         sh 'mvn clean org.sonar.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'        
+                         sh 'mvn clean org.sonar.scanner.maven:sonar-maven-plugin:6.1.0.4477:sonar'        
                     }
                 }
             }
