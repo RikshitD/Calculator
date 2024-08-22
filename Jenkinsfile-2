@@ -3,8 +3,9 @@ pipeline {
     tools {
         maven 'm7' 
     }
-    environments {
+    environment {
         SONAR_TOKEN = credential('SONAR_JENKINS')
+    }
     stages {
         stage("Scan") {
             steps {
